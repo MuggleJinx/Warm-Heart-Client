@@ -1,5 +1,6 @@
 import {
   SET_SCREAMS,
+  SET_PROJECTS,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
   LOADING_DATA,
@@ -11,6 +12,7 @@ import {
 
 const initialState = {
   screams: [],
+  projects: [],
   scream: {},
   loading: false,
 };
@@ -26,6 +28,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         screams: action.payload,
+        loading: false,
+      };
+    case SET_PROJECTS:
+      return {
+        ...state,
+        projects: action.payload,
         loading: false,
       };
     case SET_SCREAM:

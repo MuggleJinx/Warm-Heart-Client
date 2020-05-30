@@ -16,13 +16,14 @@ import { logoutUser, getUserData } from './redux/actions/userActions';
 import Navbar from './components/layout/Navbar'
 import AuthRoute from './util/AuthRoute'
 import themeObject from './util/theme'
-import StickyFooter from "./util/Footer"
 
 // Pages
 import user from './pages/user'
 import home from './pages/home'
 import login from './pages/login'
 import signup from './pages/signup'
+import events from './pages/Events'
+import Typography from "@material-ui/core/Typography";
 
 const theme = createMuiTheme(themeObject)
 
@@ -52,12 +53,32 @@ function App() {
               <Route exact path='/' component={home} />
               <Route exact path='/users/:handle' component={user} />
               <Route exact path='/users/:handle/scream/:screamId' component={user} />
+              <Route exact path='/events' component={events}  />
               <AuthRoute exact path='/login' component={login}  />
               <AuthRoute exact path='/signup' component={signup}  />
             </Switch>
           </div>    
-          <br /> <br /> <br /> <br /> <br /> 
-          <StickyFooter />
+          
+          {/* <StickyFooter /> */}
+          <br /><br /><br /><br /><br /><br />
+          <footer>
+        {/* <Typography variant="h6" align="center" gutterBottom>
+          Wenzhou-Kean Univeristy <br />
+        </Typography> */}
+        <Typography
+          variant="subtitle1"
+          align="center"
+          color="textSecondary"
+          component="p"
+        >
+          Wenzhou-Kean Univeristy <br />
+          Bo Kailin, Jin Xiaotian, Song Liang, Wu Siyuan <br />
+          {"Copyright © "}
+            Warm Heart {new Date().getFullYear()}
+            {"."}
+        </Typography>
+        {/* <Copyright /> */}
+      </footer>
         </Router>
       </Provider>
     </MuiThemeProvider>

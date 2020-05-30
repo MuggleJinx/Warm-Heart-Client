@@ -1,5 +1,6 @@
 import {
   SET_SCREAMS,
+  SET_PROJECTS,
   LOADING_DATA,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
@@ -32,6 +33,25 @@ export const getScreams = () => (dispatch) => {
       });
     });
 };
+
+export const getProjects = () => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get("/projects")
+    .then((res) => {
+      dispatch({
+        type: SET_PROJECTS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_PROJECTS,
+        payload: [],
+      });
+    });
+};
+
 export const getScream = (screamId) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
